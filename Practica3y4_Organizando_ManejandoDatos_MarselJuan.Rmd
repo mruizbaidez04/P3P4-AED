@@ -2,15 +2,15 @@
 title: "Práctica 3 y 4. Preparación y manejo de Datos"
 subtitle: "Análisis Exploratorio de Datos, Máster en Ciencia de Datos - UV"
 output:
+  pdf_document:
+    toc: yes
+    toc_depth: 3
+    number_sections: no
   html_document:
     echo: yes
     number_sections: no
     theme: lumen
     toc: yes
-  pdf_document:
-    toc: yes
-    toc_depth: 3
-    number_sections: no
 ---
 
 ```{r setup, cache=F, echo=F, message=F, warning=F, tidy=F}
@@ -345,7 +345,6 @@ Vamos a cargar el conjunto de datos `VuelosNY.Rdata` que contiene dos data frame
 
 library(dplyr)
 #library(dbplyr)
-rm(list=ls())
 load("./data/VuelosNY.Rdata")
 ```
 
