@@ -229,26 +229,18 @@ Obtén la versión *tidy* de este conjunto de datos usando `pivot_longer`.
 Consejo: puedes eliminar el prefijo `wk` de las semanas mediante el argumento `names_prefix`. Opcionalmente puedes crear una columna `date` a partir de `date.entered`, sumando las semanas transcurridas desde la fecha de entrada en lista.
 
 ```{r}
-# Creamos identificadores para cada canción
-
-raw$id <- 1:nrow(raw)
 
 # Creamos una variable que contenga las semanas y otra variable que contenga
 # El ranking
 
 raw <- raw %>% pivot_longer(names_to="week", values_to="rank",
                             cols=-c("year", "artist", "track", "time", 
-                                    "date.entered", "id"), names_prefix="wk")
+                                    "date.entered"), names_prefix="wk")
 raw$week <- as.numeric(raw$week)
 
 # Quitamos las filas que contengan NAs en rank:
 
-raw <- drop_na(raw)
-
-# Como tenemos demasiada información sobre cada canción, nos quedaremos solo con
-# la información del identificador
-
-billboard_tidy <- raw[, c("id", "week", "rank")]
+rank_tidy <- drop_na(raw)
 ```
 
 ## Varias variables en una misma columna
@@ -462,6 +454,10 @@ Opcionalmente se puede crear un identificador, `id`, asociado al nombre de la ca
 
 ```{r}
 
+artista_cancion <- rank_tidy %>% select(1:5)
+artista_cancion <- unique(artista_cancion)
+
+ranking <- rank_tidy %>% select(track, week, rank)
 
 
 ```
