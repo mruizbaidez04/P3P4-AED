@@ -479,7 +479,19 @@ Esto se puede hacer fácilmente con las librerías `plyr` y `dplyr`.
 En la librería *tidyr* hay varios conjuntos de datos. **table1** es un conjunto *tidy* pero **table5** no lo es. Realiza las operaciones necesarias para obtener **table1** a partir de **table5**. También deben coincidir los tipos de datos de las columnas.
 
 ```{r}
+head(table1)
+head(table5)
 
+table5_modif <- table5 %>% rename(year2digs = year) %>%
+                           mutate(year=paste0(century, year2digs)) %>%
+                           select(-century, -year2digs) %>%
+                           separate(rate, c("cases", "population"), sep="/")
+
+table5_modif$year <- as.numeric(table5_modif$year)
+table5_modif$cases <- as.numeric(table5_modif$cases)
+table5_modif$population <- as.numeric(table5_modif$population)
+
+head(table5_modif)
 
 ```
 
