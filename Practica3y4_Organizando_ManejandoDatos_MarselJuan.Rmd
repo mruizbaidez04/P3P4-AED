@@ -402,6 +402,8 @@ flights.f <- semi_join(flights, planes.f, by="tailnum")
 Reasigna los nombres de los data frames `planes.f` y `flights.f` a los nombres originales `planes` y `flights`.
 
 ```{r }
+planes <- planes.f
+flights <- flights.f
 
 ```
 
