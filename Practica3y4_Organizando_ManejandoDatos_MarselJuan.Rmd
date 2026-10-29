@@ -363,6 +363,14 @@ Muestra las primeras muestras de ambos data frames para hacerte una idea de las 
 
 ```{r }
 
+head(flights)
+head(planes)
+
+# Contestación pregunta:
+# El conjunto `flights` no es un tidy dataset, dado que existen columnas que
+# contienen varias variables, por ejemplo, si es tiempo de llegada o de salida.
+# Por otro lado, el dataset `planes` si que es un tidy dataset.
+
 ```
 
 ### Ejercicio 6
