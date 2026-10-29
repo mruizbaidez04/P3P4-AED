@@ -248,7 +248,7 @@ raw <- drop_na(raw)
 # Como tenemos demasiada información sobre cada canción, nos quedaremos solo con
 # la información del identificador
 
-raw_tidy <- raw[, c("id", "week", "rank")]
+billboard_tidy <- raw[, c("id", "week", "rank")]
 ```
 
 ## Varias variables en una misma columna
@@ -269,6 +269,10 @@ Para pasar a formato *tidy* necesitamos realizar dos operaciones en este caso. E
 Convierte el conjunto de datos TB en *tidy* utilizando `gather` y `separate`.
 
 ```{r}
+tuberculosis_tidy <- raw %>% gather(key="Grupos_Demograficos", 
+                                    value="Freq", 3:18) %>% 
+                              separate(Grupos_Demograficos, c("sexo", "rango_edad"),
+                                       sep=1)
 
 ```
 
