@@ -381,7 +381,12 @@ En nuestro estudio queremos aplicar una serie de criterios de exclusión sobre l
 
 ```{r }
 
+planes.f <- planes %>% filter(manufacturer != "MCDONNELL DOUGLAS") %>%
+                       filter(90 <= seats & seats <= 210)
 
+planes.f$manufacturer[grep("AIRBUS", planes.f$manufacturer)] <- "AIRBUS COMP"
+
+flights.f <- flights %>% filter(tailnum %in% planes.f$tailnum)
 
 ```
 
